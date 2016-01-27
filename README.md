@@ -1,10 +1,4 @@
-﻿---
-title: 搬瓦工VPSController
-date: 2016-01-28 01:40:45
-tags: Android
----
-
-# **VPSController**
+﻿# **VPSController**
 
 #### VPSController(搬瓦工VPSController)
 > A Simple BandWaGonHost(搬瓦工) vps Controller
