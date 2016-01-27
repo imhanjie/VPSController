@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">搬瓦工VPS控制台</string>
+    <string name="help_doc">声明:\n\n本应用不会窃取你任何信息，不会将你的信息上传到服务器\n\nGithub地址:\nhttps://github.com/95han/VPSController\n\n1、进入你的搬瓦工VPS服务器的KiwiVM控制面板\n\n2、点击左边栏的\"API\"\n\n3、可以看到VEID: xxxxx\n\n4、再点击\"Show API Key\"即可看到你的ApiKey</string>
+</resources>
