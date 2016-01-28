@@ -21,18 +21,18 @@ import hanjie.app.vpscontroller.utils.DialogUtils;
 public class SetupActivity extends AppCompatActivity {
 
     private Toolbar mToolbar;
-    private EditText mVEID;
-    private EditText mApiKey;
+    private EditText mVEIDEditTextView;
+    private EditText mApiKeyEditTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup);
         initToolbar();
-        mVEID = (EditText) findViewById(R.id.et_veid);
-        mVEID.setText(API.getVEID(this));
-        mApiKey = (EditText) findViewById(R.id.et_apikey);
-        mApiKey.setText(API.getAPIKey(this));
+        mVEIDEditTextView = (EditText) findViewById(R.id.et_veid);
+        mVEIDEditTextView.setText(API.getVEID(this));
+        mApiKeyEditTextView = (EditText) findViewById(R.id.et_apikey);
+        mApiKeyEditTextView.setText(API.getAPIKey(this));
     }
 
     private void initToolbar() {
@@ -42,8 +42,8 @@ public class SetupActivity extends AppCompatActivity {
     }
 
     public void confirm(View view) {
-        String veid = mVEID.getText().toString();
-        String apiKey = mApiKey.getText().toString();
+        String veid = mVEIDEditTextView.getText().toString();
+        String apiKey = mApiKeyEditTextView.getText().toString();
         if (!TextUtils.isEmpty(veid) && !TextUtils.isEmpty(apiKey)) {
             SharedPreferences sp = getSharedPreferences(DataParse.CONFIG, MODE_PRIVATE);
             SharedPreferences.Editor editor = sp.edit();

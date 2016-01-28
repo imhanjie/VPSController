@@ -1,9 +1,7 @@
 package hanjie.app.vpscontroller.fragment;
 
-import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.view.LayoutInflater;
@@ -27,11 +25,11 @@ import hanjie.app.vpscontroller.utils.SnackBarUtils;
  */
 public class VPSControlFragment extends BaseFragment implements View.OnClickListener {
 
-    private TextView mStartVPS;
-    private TextView mRestartVPS;
-    private TextView mStopVPS;
-    private TextView mKillVPS;
-    private AVLoadingIndicatorView mLoading;
+    private TextView mStartTextView;
+    private TextView mRestartTextView;
+    private TextView mStopTextView;
+    private TextView mKillTextView;
+    private AVLoadingIndicatorView mLoadingView;
     private LinearLayout mButtonArea;
 
     public VPSControlFragment() {
@@ -47,16 +45,16 @@ public class VPSControlFragment extends BaseFragment implements View.OnClickList
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View controlView = inflater.inflate(R.layout.fragment_vps_control, container, false);
-        mLoading = (AVLoadingIndicatorView) controlView.findViewById(R.id.loading);
+        mLoadingView = (AVLoadingIndicatorView) controlView.findViewById(R.id.loading);
         mButtonArea = (LinearLayout) controlView.findViewById(R.id.ll_buttonArea);
-        mStartVPS = (TextView) controlView.findViewById(R.id.tv_startVPS);
-        mStartVPS.setOnClickListener(this);
-        mRestartVPS = (TextView) controlView.findViewById(R.id.tv_restartVPS);
-        mRestartVPS.setOnClickListener(this);
-        mStopVPS = (TextView) controlView.findViewById(R.id.tv_stopVPS);
-        mStopVPS.setOnClickListener(this);
-        mKillVPS = (TextView) controlView.findViewById(R.id.tv_killVPS);
-        mKillVPS.setOnClickListener(this);
+        mStartTextView = (TextView) controlView.findViewById(R.id.tv_startVPS);
+        mStartTextView.setOnClickListener(this);
+        mRestartTextView = (TextView) controlView.findViewById(R.id.tv_restartVPS);
+        mRestartTextView.setOnClickListener(this);
+        mStopTextView = (TextView) controlView.findViewById(R.id.tv_stopVPS);
+        mStopTextView.setOnClickListener(this);
+        mKillTextView = (TextView) controlView.findViewById(R.id.tv_killVPS);
+        mKillTextView.setOnClickListener(this);
         return controlView;
     }
 
@@ -86,7 +84,7 @@ public class VPSControlFragment extends BaseFragment implements View.OnClickList
 
         @Override
         protected void onPreExecute() {
-            mLoading.setVisibility(View.VISIBLE);
+            mLoadingView.setVisibility(View.VISIBLE);
             mButtonArea.setVisibility(View.INVISIBLE);
         }
 
@@ -112,13 +110,13 @@ public class VPSControlFragment extends BaseFragment implements View.OnClickList
                 // 命令执行失败
                 showSimpleSnackBar("执行失败");
             }
-            mLoading.setVisibility(View.INVISIBLE);
+            mLoadingView.setVisibility(View.INVISIBLE);
             mButtonArea.setVisibility(View.VISIBLE);
         }
     }
 
     public void showSimpleSnackBar(String text) {
-        Snackbar snackbar = Snackbar.make(mStartVPS, text, Snackbar.LENGTH_LONG);
+        Snackbar snackbar = Snackbar.make(mStartTextView, text, Snackbar.LENGTH_LONG);
         SnackBarUtils.customSnackBar(snackbar, getResources().getColor(R.color.colorPrimary), getResources().getColor(R.color.white), 0);
         snackbar.show();
     }

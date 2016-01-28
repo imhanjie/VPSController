@@ -42,7 +42,7 @@ public class VPSInfoFragment extends BaseFragment {
     private RecyclerView mRecyclerView;
     private VPSInfoAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private AVLoadingIndicatorView mLoading;
+    private AVLoadingIndicatorView mLoadingView;
 
     public VPSInfoFragment() {
 
@@ -59,7 +59,7 @@ public class VPSInfoFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.d("bingo", "info onCreateView");
         View vpsInfoView = inflater.inflate(R.layout.fragment_vps_info, container, false);
-        mLoading = (AVLoadingIndicatorView) vpsInfoView.findViewById(R.id.loading);
+        mLoadingView = (AVLoadingIndicatorView) vpsInfoView.findViewById(R.id.loading);
         mRecyclerView = (RecyclerView) vpsInfoView.findViewById(R.id.recyclerView_vpsInfo);
         mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
@@ -90,7 +90,7 @@ public class VPSInfoFragment extends BaseFragment {
 
         @Override
         protected void onPreExecute() {
-            mLoading.setVisibility(View.VISIBLE);
+            mLoadingView.setVisibility(View.VISIBLE);
             mRecyclerView.setVisibility(View.INVISIBLE);
         }
 
@@ -120,7 +120,7 @@ public class VPSInfoFragment extends BaseFragment {
 
         @Override
         protected void onPostExecute(Integer size) {
-            mLoading.setVisibility(View.INVISIBLE);
+            mLoadingView.setVisibility(View.INVISIBLE);
             updateRecyclerView(size);
             mRecyclerView.setVisibility(View.VISIBLE);
         }
@@ -137,7 +137,7 @@ public class VPSInfoFragment extends BaseFragment {
     }
 
     public void showSimpleSnackBar(String text) {
-        Snackbar snackbar = Snackbar.make(mLoading, text, Snackbar.LENGTH_LONG);
+        Snackbar snackbar = Snackbar.make(mLoadingView, text, Snackbar.LENGTH_LONG);
         SnackBarUtils.customSnackBar(snackbar, getResources().getColor(R.color.colorPrimary), getResources().getColor(R.color.white), 0);
         snackbar.show();
     }
